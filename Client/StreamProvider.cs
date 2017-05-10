@@ -12,7 +12,7 @@ namespace Client
     {
         public static void CreateFilteredStream(string filter)
         {
-            int counter = 0;
+            int counter = 0;// this will go over bounds if stream is open too long
             
             var stream = Stream.CreateFilteredStream();
             stream.AddTrack(filter);
@@ -34,7 +34,7 @@ namespace Client
         public static double CalculateTweetsPerHour(int tweetsCounter, DateTime then)
         {
             double elapsedSeconds = (DateTime.Now - then).TotalSeconds;
-            double rate = (tweetsCounter * 3600) / elapsedSeconds.;
+            double rate = (tweetsCounter * 3600) / elapsedSeconds; //definately not ideal
             return rate;
         }
 
